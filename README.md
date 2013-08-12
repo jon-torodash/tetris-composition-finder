@@ -11,8 +11,10 @@ PERFECTLY (no pieces jutting out), ie producing a "Tetris" maneuver in the game.
 ASCII is used for graphical purposes. Each Tetris piece has a unique symbol for
 each tile it occupies that attempts to closely resemble what the piece looks like on the board.
 
-So for example, the box piece is    O O   and the flat straight piece is:  - - - -
-									O O
+So for example, the box piece is    |O|O|   
+									|O|O|
+
+and the flat straight piece is:  - - - -
 									
 Grouping each contiguous char type will give a sense of the shape it is describing.
 
@@ -23,10 +25,10 @@ This problem is broken down into two tasks:
 2) For each possible column-group size 2 through 9, we count how many ways to fill a board of that size using standard backtracking. For size 1, the trivial case, has just the vertical straight Tetramino piece to fit so we note it and move on. 
 Size 2 has 3:
 
-O O   P P   7 7
-O O	  P J   L 7
-O O   P J   L 7
-O O   J J   L L
+|O|O| |P|P| |7|7|
+|O|O| |P|J| |L|7|
+|O|O| |P|J| |L|7|
+|O|O| |J|J| |L|L|
 
 Note that we DO NOT count for size 2 the fill configuration that consists of two vertical straight pieces. This is because the furst task has already found every unique decomposition of a 10 column board in general terms. (Counting a size 2 board fill with 2 vertical pieces effectively double counts configurations such as {4,2,2,1,1} and {4,1,1,1,1,1,1}. We found each of those configurations separately in step 1.) As the "mini boards" grow larger toward size 9, there are more chances to prematurely fill out the board, triggering a backtrack. This markedly reduces the runtime of the task.
 
